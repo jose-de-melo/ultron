@@ -1,1 +1,4 @@
-# webservices-tp1-ultron
+# WebServices - Primeiro Trabalho Prático
+
+- José de Melo
+- Tarlles Roman
