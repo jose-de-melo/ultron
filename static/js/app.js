@@ -11,3 +11,7 @@ function onClick(){
         i = 0;
     }
 }
+
+$('#btn').click(function(){
+    $('#info').removeClass('invisible');
+})
