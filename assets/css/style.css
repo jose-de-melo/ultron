@@ -1,0 +1,80 @@
+#imgCarousel{
+    height: 500px;
+}
+
+.carousel-inner{
+    width: 300px;
+}
+
+#divCarousel{
+    width: 300px;
+    margin:0 auto ;
+    margin-top: 2%;
+    text-align: center;
+}
+
+.titleDiv{
+    font-size: 40px;
+    text-align: center;
+}
+
+.first{
+    margin-top: 5%;
+}
+
+body{
+    background-color: rgba(128, 128, 128, 0.2);
+}
+
+#carouselBg{
+    margin-top: 15%;
+    margin-bottom: 50%;
+}
+
+
+.cardInfo{
+    background-color: inherit;
+    margin-top: 30px;
+}
+
+.info{
+    margin-top: 50px;
+    font-size: 20px;
+    background-color: inherit;
+}
+
+.card-title{
+    font-size: 25px;
+}
+
+#main{
+    animation-name: contrair;
+    animation-duration: 0.2s;
+}
+
+@keyframes contrair{
+    0%{
+        margin-top: 44%;
+    }
+
+    40%{
+        margin-top: 28%;
+    }
+   
+    80%{
+        margin-top: 12%;
+    }
+    
+}
+
+.twetts{
+    margin-top: 5%;
+    margin-bottom: 10%;
+}
+
+
+
+
+
+
+
