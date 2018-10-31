@@ -22,14 +22,7 @@ def get_hash(date):
 
 
 def main():
-    
-    url = url_marvel + hero + get_complemento_url()
-
-    r = requests.get(url)
-    arq = open('response.json', 'w')
-    arq.write(r.text)
-    arq.close()
-    print(r.text)
+    print(get_complemento_url())
 
 
 def get_complemento_url():
