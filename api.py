@@ -32,9 +32,16 @@ def search():
                     {"figura": 'images/comics/comic3.jpg', "active": ""},
                     {"figura": 'images/comics/comic4.jpg', "active": ""},
                     {"figura": 'images/comics/comic5.jpg', "active": ""}
-                    ]
-    }
-    return render_template("index.html", json=json, query=query)
+                    ]}
+
+    twett = {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "static/images/perfil.jpg",
+      "nota" : 2,
+      "data" : "14/02/2017"}
+    
+    return render_template("index.html", json=json, query=query, tt = twett)
 
 
 @app.route('/hero/<nome>', methods=['GET'])

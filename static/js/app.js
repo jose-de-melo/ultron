@@ -15,3 +15,8 @@ function onClick(){
 $('#btn').click(function(){
     $('#info').removeClass('invisible');
 })
+
+$('#btn').click(function(){
+    $('#loader').removeClass('invisible');
+})
+

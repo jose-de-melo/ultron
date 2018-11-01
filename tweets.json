@@ -3,6 +3,8 @@
     [{"username": "joseslv13",
       "nickname" : "Zé",
       "conteudo" : "Captain America is the best Marvel Hero",
-      "url_foto_perfil" : "assets/images/perfil.jpg"},
+      "url_foto_perfil" : "static/images/perfil.jpg",
+      "nota_avaliacao_sentimento" : 4,
+      "data" : "14/02/2017"},
       {}]
 }

@@ -8,6 +8,7 @@
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/bootstrap.css') }}" />
     <link rel="stylesheet" type="text/css" media="screen" href="{{ url_for('static', filename='css/style.css') }}" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     
 </head>
 <body>
@@ -54,7 +55,7 @@
             <br>
             <br>
             
-            
+    
             <div id="divCarousel">
                 <h5 class="titleDiv">- Comics Hero -</h5>
                 
@@ -87,85 +88,133 @@
             <h5 class="titleDiv">- Review of Comments on Twitter -</h5>
             
             <div class="card-columns twetts">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Zé @joseslv13</h5>
-                        <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                    </div>
-                </div>
-                <div class="card p-3">
-                    <blockquote class="blockquote mb-0 card-body">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">
-                            <small class="text-muted">
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
+                {% if tt.nota > 3 %}
+                <div class="card text-white bg-success">
+                    {% else %}
+                    <div class="card text-white bg-danger">
+                        {% endif %}
+                        <div class="card-body">
+                            
+                            <h5 class="card-title"><img class="rounded-circle" style="width: 50px;height: 50px;" src="{{ url_for('static', filename='images/me.jpg') }}" />Zé<br>@joseslv13</h5>
+                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                        </div>
+                        <footer>
+                            <i class="far fa-smile-beam"></i> 4
                         </footer>
-                    </blockquote>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                    </div>
+                    <div class="card p-3">
+                        <blockquote class="blockquote mb-0 card-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <footer class="blockquote-footer">
+                                <small class="text-muted">
+                                    Someone famous in <cite title="Source Title">Source Title</cite>
+                                </small>
+                            </footer>
+                        </blockquote>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                    <div class="card bg-primary text-white text-center p-3">
+                        <blockquote class="blockquote mb-0">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+                            <footer class="blockquote-footer">
+                                <small>
+                                    Someone famous in <cite title="Source Title">Source Title</cite>
+                                </small>
+                            </footer>
+                        </blockquote>
+                    </div>
+                    <div class="card text-center">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <blockquote class="blockquote mb-0">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <footer class="blockquote-footer">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                                    <footer class="blockquote-footer">
+                                        <small class="text-muted">
+                                            Someone famous in <cite title="Source Title">Source Title</cite>
+                                        </small>
+                                    </footer>
+                                </blockquote>
+                                <small class="text-muted">
+                                    Someone famous in <cite title="Source Title">Source Title</cite>
+                                </small>
+                            </footer>
+                        </blockquote>
+                    </div>
+                    <div class="card p-3 text-right text-white bg-danger">
+                        <blockquote class="blockquote mb-0">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                            <footer class="blockquote-footer">
+                                <i class="far fa-angry"></i>2
+                                <small class="text-muted">
+                                    Someone famous in <cite title="Source Title">Source Title</cite>
+                                </small>
+                            </footer>
+                        </blockquote>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Card title</h5>
+                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+                            <p class="alert alert-success" role="alert">
+                                A simple success alert—check it out!
+                                <small class="text-muted">Last updated 3 mins ago</small>
+                            </p>
+                        </div>
                     </div>
                 </div>
-                <div class="card bg-primary text-white text-center p-3">
-                    <blockquote class="blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                        <footer class="blockquote-footer">
-                            <small>
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
+                {% else %}          
+                <div class="progress invisible" id="loader">
+                    <div class="indeterminate"></div>
                 </div>
-                <div class="card text-center">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                
+                <div class="row info divInicial">
+                    <div class="col-lg-5 col-sm-12">
+                        <img class="rounded-circle" src="{{ url_for ('static',filename='images/ultron.png') }}" style="width: 80%;">
+                    </div>
+                    
+                    <div class="col-lg-7 col-sm-12">
+                        <div class="card border-0 cardInfo"> 
+                            <div class="card-body">
+                                <p class="card-text textDiv pt-5">Hi, human. My name is Ultron and I came to this planet with only one goal: to conquer it. Because of this, heroes
+                                    have declared war on me and I need information to defeat them. You can help me with this, search for a hero who knows and will be helping me to build my reign!</p>
+                                    
+                                    <p class="alert alert-success" role="alert">
+                                        {{ 10 }} hero(es) alreay registered.
+                                    </p>
+                            
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="card">
-                </div>
-                <div class="card p-3 text-right">
-                    <blockquote class="blockquote mb-0">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                        <footer class="blockquote-footer">
-                            <small class="text-muted">
-                                Someone famous in <cite title="Source Title">Source Title</cite>
-                            </small>
-                        </footer>
-                    </blockquote>
-                </div>
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Card title</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                        <p class="card-<div class="alert alert-success" role="alert">
-                            A simple success alert—check it out!
-                        </div>text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                    </div>
-                </div>
+                <br>
+                <br>
+                
+                {% endif %}
             </div>
-            {% else %}
-            <h1>Olá mundo! {{query}}</h1>
-            <div class="alert alert-success invisible" id="info" role="alert">
-                A simple success alert—check it out!
-            </div>
-            {% endif %}
-        </div>
+            
+        </main>
         
-    </main>
-    
-    <footer class="bg-primary text-center" style="height: 100%;margin-bottom: 0;">
-        <br>
-        <p class="text-light">Made by José de Melo & Tarlles Roman <br>© 2018 Ultron</p>
-    </footer>
-    
-    <script src="{{ url_for ('static',filename='js/jquery-3.3.1.min.js') }}"></script>
-    <script src="{{ url_for ('static',filename='js/bootstrap.min.js') }}"></script>
-    <script src="{{ url_for ('static',filename='js/app.js') }}"></script>
-</body>
-</html>
+        <footer class="bg-primary text-center" style="height: 100%;margin-bottom: 0;">
+            <br>
+            <p class="text-light">Made by José de Melo & Tarlles Roman <br>© 2018 Ultron</p>
+        </footer>
+        
+        <script src="{{ url_for ('static',filename='js/jquery-3.3.1.min.js') }}"></script>
+        <script src="{{ url_for ('static',filename='js/bootstrap.min.js') }}"></script>
+        <script src="{{ url_for ('static',filename='js/app.js') }}"></script>
+    </body>
+    </html>
