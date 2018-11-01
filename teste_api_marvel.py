@@ -8,7 +8,7 @@ import requests
 marvel_api_public_key = '9399a05df30b09d3e38fb1af1713c0c5'
 marvel_api_private_key = '4f7daf1eaaa9e4100c83ff1f453e3d1a0abdd2d5'
 
-hero = 'Iron Man'
+hero = 'Hulk'
 url_marvel = 'https://gateway.marvel.com/v1/public/characters?name='
 
 
@@ -22,7 +22,9 @@ def get_hash(date):
 
 
 def main():
-    print(get_complemento_url())
+
+    r = requests.get(url_marvel + hero + get_complemento_url())
+    print(r.text)
 
 
 def get_complemento_url():

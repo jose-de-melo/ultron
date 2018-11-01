@@ -17,14 +17,14 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def index():
-    return render_template("index.html")
+    return render_template("index.html", status=201)
 
 
 @app.route('/hero', methods=['GET'])
 def search():
     query = request.args.get('query')
 
-    time.sleep(2)
+    time.sleep(5)
 
     json = {
         "figuras":[{"figura": 'images/comics/comic1.jpg', "active": "active"},
@@ -34,27 +34,119 @@ def search():
                     {"figura": 'images/comics/comic5.jpg', "active": ""}
                     ]}
 
-    twett = {"username": "joseslv13",
+    twetts = {"twetts":[{"username": "joseslv13",
       "nickname" : "Zé",
       "conteudo" : "Captain America is the best Marvel Hero",
-      "url_foto_perfil" : "static/images/perfil.jpg",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 4,
+      "data" : "14/02/2017",
+      "cardClass" : "card"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 4.2,
+      "data" : "14/02/2017",
+      "cardClass" : "card p-3"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 1.2,
+      "data" : "14/02/2017",
+      "cardClass" : "card"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 3.1,
+      "data" : "14/02/2017",
+      "cardClass" : "card p-3"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 4.5,
+      "data" : "14/02/2017",
+      "cardClass" : "card"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
       "nota" : 2,
-      "data" : "14/02/2017"}
+      "data" : "14/02/2017",
+      "cardClass" : "card p-3"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 3,
+      "data" : "14/02/2017",
+      "cardClass" : "card"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 1,
+      "data" : "14/02/2017",
+      "cardClass" : "card p-3"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 3.2,
+      "data" : "14/02/2017",
+      "cardClass" : "card"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 4.2,
+      "data" : "14/02/2017",
+      "cardClass" : "card p-3"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 4.2,
+      "data" : "14/02/2017",
+      "cardClass" : "card"},
+
+      {"username": "joseslv13",
+      "nickname" : "Zé",
+      "conteudo" : "Captain America is the best Marvel Hero",
+      "url_foto_perfil" : "images/me.jpg",
+      "nota" : 4.2,
+      "data" : "14/02/2017",
+      "cardClass" : "card p-3"}
+      
+      ]
+      
+      }
+
+    status = 200
+
+    if query == 'erro':
+        status = 404
+
+
     
-    return render_template("index.html", json=json, query=query, tt = twett)
+    return render_template("index.html", json=json, query=query, t = twetts, status=status)
 
 
 @app.route('/hero/<nome>', methods=['GET'])
 def get_info_hero(nome):
     pass
-
-
-@app.route('/teste', methods=['GET'])
-def teste():
-    strJ = '{"funcionou": 200}'
-
-    return strJ
-
 
 
 def get_timestamp_now():

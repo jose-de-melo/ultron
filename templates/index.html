@@ -24,197 +24,161 @@
                 </form>
             </div>
         </nav>
+
+
+        
         
         
         <div class="container mainSection" id="main">
-            {% if json %}
-            
-            <h5 class="titleDiv first">- Info Hero -</h5>
-            <div class="row info">
-                <div class="col-lg-5 col-sm-12">
-                    <img class="rounded-circle" src="{{ url_for ('static',filename='images/captain.jpg') }}" style="width: 80%;">
-                </div>
-                
-                <div class="col-lg-7 col-sm-12">
-                    <div class="card border-0 cardInfo"> 
-                        <div class="card-body">
-                            <h5 class="card-title text-primary">Captain America</h5>
-                            <p class="card-text">Vowing to serve his country any way he could, young Steve Rogers took the super soldier serum to become America's one-man army. Fighting for the red, white and blue for over 60 years, Captain America is the living, breathing symbol of freedom and liberty.</p>
-                            
-                            <footer class="blockquote-footer">
-                                <small>
-                                    <a href="http://marvel.com">Data provided by Marvel. © 2018 MARVEL</a>
-                                </small>
-                            </footer>
+                {% if status == 201 %}
+                   
+                    
+                    <div class="row info divInicial">
+                        <div class="col-lg-5 col-sm-12">
+                            <img class="rounded-circle" src="{{ url_for ('static',filename='images/ultron.png') }}" style="width: 80%;">
                         </div>
-                    </div>
-                </div>
-            </div>
-            
-            <br>
-            <br>
-            <br>
-            
-    
-            <div id="divCarousel">
-                <h5 class="titleDiv">- Comics Hero -</h5>
-                
-                <div id="carouselBg">
-                    <div id="carouselExample" class="carousel slide carousel-fade center">
-                        <div class="carousel-inner">
-                            {% for figure in json.figuras %}
-                            
-                            <div class="carousel-item {{figure.active}}">
-                                <img id="imgCarousel" class="d-block w-100" src="{{ url_for ('static',filename=figure.figura ) }}">
+                        
+                        <div class="col-lg-7 col-sm-12">
+                            <div class="card border-0 cardInfo"> 
+                                <div class="card-body">
+                                    <p class="card-text textDiv pt-5">Hi, human. My name is Ultron and I came to this planet with only one goal: to conquer it. Because of this, heroes
+                                        have declared war on me and I need information to defeat them. You can help me with this, search for a hero who knows and will be helping me to build my reign!
+                                    </p>
+                                        
+                                    <p class="alert alert-success" role="alert">
+                                        {{ 10 }} hero(es) already registered.
+                                    </p>
+                                </div>
                             </div>
-                            
-                            {% endfor %}
-                            
-                            
-                            <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
-                                <span class="sr-only">Previous</span>
-                            </a>
-                            
-                            <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span> 
-                                <span class="sr-only">Next</span>
-                            </a>
+                        </div>
+
+                        <div class="progress invisible align-content-center" id="loader">
+                                <div class="indeterminate bg-danger rounded"></div>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <h5 class="titleDiv">- Review of Comments on Twitter -</h5>
-            
-            <div class="card-columns twetts">
-                {% if tt.nota > 3 %}
-                <div class="card text-white bg-success">
-                    {% else %}
-                    <div class="card text-white bg-danger">
-                        {% endif %}
-                        <div class="card-body">
-                            
-                            <h5 class="card-title"><img class="rounded-circle" style="width: 50px;height: 50px;" src="{{ url_for('static', filename='images/me.jpg') }}" />Zé<br>@joseslv13</h5>
-                            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                {% endif %}
+
+                {% if status == 200 %}
+                    <h5 class="titleDiv first">- Info Hero -</h5>
+                    <div class="row info">
+                        <div class="col-lg-5 col-sm-12">
+                            <img class="rounded-circle" src="{{ url_for ('static',filename='images/captain.jpg') }}" style="width: 80%;">
                         </div>
-                        <footer>
-                            <i class="far fa-smile-beam"></i> 4
-                        </footer>
-                    </div>
-                    <div class="card p-3">
-                        <blockquote class="blockquote mb-0 card-body">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <footer class="blockquote-footer">
-                                <small class="text-muted">
-                                    Someone famous in <cite title="Source Title">Source Title</cite>
-                                </small>
-                            </footer>
-                        </blockquote>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card bg-primary text-white text-center p-3">
-                        <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
-                            <footer class="blockquote-footer">
-                                <small>
-                                    Someone famous in <cite title="Source Title">Source Title</cite>
-                                </small>
-                            </footer>
-                        </blockquote>
-                    </div>
-                    <div class="card text-center">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                    <div class="card">
-                        <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <footer class="blockquote-footer">
-                                <blockquote class="blockquote mb-0">
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+                        
+                        <div class="col-lg-7 col-sm-12">
+                            <div class="card border-0 cardInfo"> 
+                                <div class="card-body">
+                                    <h5 class="card-title text-primary">Captain America</h5>
+                                    <p class="card-text">Vowing to serve his country any way he could, young Steve Rogers took the super soldier serum to become America's one-man army. Fighting for the red, white and blue for over 60 years, Captain America is the living, breathing symbol of freedom and liberty.</p>
+                                    
                                     <footer class="blockquote-footer">
-                                        <small class="text-muted">
-                                            Someone famous in <cite title="Source Title">Source Title</cite>
+                                        <small>
+                                            <a href="http://marvel.com">Data provided by Marvel. © 2018 MARVEL</a>
                                         </small>
                                     </footer>
-                                </blockquote>
-                                <small class="text-muted">
-                                    Someone famous in <cite title="Source Title">Source Title</cite>
-                                </small>
-                            </footer>
-                        </blockquote>
-                    </div>
-                    <div class="card p-3 text-right text-white bg-danger">
-                        <blockquote class="blockquote mb-0">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
-                            <footer class="blockquote-footer">
-                                <i class="far fa-angry"></i>2
-                                <small class="text-muted">
-                                    Someone famous in <cite title="Source Title">Source Title</cite>
-                                </small>
-                            </footer>
-                        </blockquote>
-                    </div>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title">Card title</h5>
-                            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-                            <p class="alert alert-success" role="alert">
-                                A simple success alert—check it out!
-                                <small class="text-muted">Last updated 3 mins ago</small>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                {% else %}          
-                <div class="progress invisible" id="loader">
-                    <div class="indeterminate"></div>
-                </div>
-                
-                <div class="row info divInicial">
-                    <div class="col-lg-5 col-sm-12">
-                        <img class="rounded-circle" src="{{ url_for ('static',filename='images/ultron.png') }}" style="width: 80%;">
-                    </div>
-                    
-                    <div class="col-lg-7 col-sm-12">
-                        <div class="card border-0 cardInfo"> 
-                            <div class="card-body">
-                                <p class="card-text textDiv pt-5">Hi, human. My name is Ultron and I came to this planet with only one goal: to conquer it. Because of this, heroes
-                                    have declared war on me and I need information to defeat them. You can help me with this, search for a hero who knows and will be helping me to build my reign!</p>
-                                    
-                                    <p class="alert alert-success" role="alert">
-                                        {{ 10 }} hero(es) alreay registered.
-                                    </p>
-                            
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <br>
-                <br>
                 
+                
+                    <div id="divCarousel">
+                        <h5 class="titleDiv">- Comics -</h5>
+                        
+                        <div id="carouselBg">
+                            <div id="carouselExample" class="carousel slide carousel-fade center">
+                                <div class="carousel-inner">
+                                    {% for figure in json.figuras %}
+                                    
+                                    <div class="carousel-item {{figure.active}}">
+                                        <img id="imgCarousel" class="d-block w-100" src="{{ url_for ('static',filename=figure.figura ) }}">
+                                    </div>
+                                    
+                                    {% endfor %}
+                                    
+                                    
+                                    <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span> 
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    
+                                    <a class="carousel-control-next" href="#carouselExample" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span> 
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h5 class="titleDiv">- Twitter Mentions Analysis -</h5>
+                    
+                    <div class="card-columns twetts">
+                        {% for tt in t.twetts %}
+                        {% if tt.nota > 3 %}
+                        <div class="card text-white bg-success">
+                            {% else %}
+                            <div class="{{ tt.cardClass }} text-white bg-danger">
+                                {% endif %}
+                                <div class="card-body">
+                                    
+                                    <h5 class="card-title"><img class="rounded-circle mr-3" style="width: 50px;height: 50px;" src="{{ url_for('static', filename=tt.url_foto_perfil) }}" />{{ tt.nickname }} (@{{ tt.username }})</h5>
+                                    <p class="card-text"><cite>{{ tt.conteudo }}</cite></p>
+                                    
+                                </div>
+                                
+                                <footer class="fooTwett">
+                                    <span class="data"><cite>{{ tt.data }}</cite></span>
+                                    {% if tt.nota > 3 %}
+                                    <i class="far fa-thumbs-up iconReview"></i> Positive comment 
+                                    {% else %}
+                                    <i class="far fa-thumbs-down iconReview"></i> Negative comment 
+                                    {% endif %}
+                                </footer>
+                            </div>
+                            {% endfor %}
+                        </div>
+                    </div>
                 {% endif %}
-            </div>
+
+
+                {% if status == 404%}
+                    <div class="alert alert-danger divAlert" role="alert">
+                        <div class="row">
+                            <div class="col-lg-12 col-sm-12">
+                                <div class="card border-0 cardAlert"> 
+                                    <div class="card-body">
+                                        <h5 class="card-title textInvalidName">Invalid name!</h5>
+                                        <p class="card-text">The given name is not valid or is not a Marvel hero name.
+                                                
+                                                Provide a valid name.
+                                                <br><br><br>
+                                                
+                                                
+                                                Examples:
+                                                <br>
+                                                <a class="alert-link" href="{{ url_for('search', query='Captain America')}}">Captain America</a><br>
+                                                <a class="alert-link" href="{{ url_for('search', query='Iron Man')}}">Iron Man</a><br>
+                                                <a class="alert-link" href="{{ url_for('search', query='Spider-Man')}}">Spider-Man</a><br>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                {% endif %}
+                
+            </main>
             
-        </main>
-        
-        <footer class="bg-primary text-center" style="height: 100%;margin-bottom: 0;">
-            <br>
-            <p class="text-light">Made by José de Melo & Tarlles Roman <br>© 2018 Ultron</p>
-        </footer>
-        
-        <script src="{{ url_for ('static',filename='js/jquery-3.3.1.min.js') }}"></script>
-        <script src="{{ url_for ('static',filename='js/bootstrap.min.js') }}"></script>
-        <script src="{{ url_for ('static',filename='js/app.js') }}"></script>
-    </body>
-    </html>
+            <footer class="bg-primary text-center" style="height: 100%;margin-bottom: 0;">
+                <br>
+                <p class="text-light">Made by José de Melo & Tarlles Roman
+                    <br><a href="https://github.com/jose-de-melo/webservices-tp1-ultron"><i class="fab fa-github text-white" style="font-size: 30px"></i></a>
+                    <br>© 2018 <a class="text-white" href="https://jose-de-melo.github.io/ultron/" style="text-decoration: none;">Ultron</a></p>
+                </footer>
+                
+                <script src="{{ url_for ('static',filename='js/jquery-3.3.1.min.js') }}"></script>
+                <script src="{{ url_for ('static',filename='js/bootstrap.min.js') }}"></script>
+                <script src="{{ url_for ('static',filename='js/app.js') }}"></script>
+            </body>
+            </html>
