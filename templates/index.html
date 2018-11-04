@@ -19,7 +19,7 @@
                 <a class="navbar-brand text-white align-content-sm-center" href="{{ url_for('index') }}">Ultron</a>
                 
                 <form class="form-inline my-2 my-lg-0" method="GET" action="{{ url_for('search')}}">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Hero name" aria-label="Search" id="input" name="query" value="{{query}}">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Hero name" aria-label="Search" id="input" name="name" value="{{query}}">
                     <button class="btn btn-primary my-2 my-sm-0 align-content-sm-center" id="btn">Search</button>
                 </form>
             </div>
@@ -44,10 +44,12 @@
                                     <p class="card-text textDiv pt-5">Hi, human. My name is Ultron and I came to this planet with only one goal: to conquer it. Because of this, heroes
                                         have declared war on me and I need information to defeat them. You can help me with this, search for a hero who knows and will be helping me to build my reign!
                                     </p>
-                                        
+                                    
+                                    <!--
                                     <p class="alert alert-success" role="alert">
                                         {{ 10 }} hero(es) already registered.
                                     </p>
+                                    -->
                                 </div>
                             </div>
                         </div>
@@ -62,20 +64,29 @@
                     <h5 class="titleDiv first">- Info Hero -</h5>
                     <div class="row info">
                         <div class="col-lg-5 col-sm-12">
-                            <img class="rounded-circle" src="{{ url_for ('static',filename='images/captain.jpg') }}" style="width: 80%;">
+                            <img class="rounded-circle" src="{{ hero.img_url }}" style="width: 80%;">
                         </div>
                         
                         <div class="col-lg-7 col-sm-12">
                             <div class="card border-0 cardInfo"> 
                                 <div class="card-body">
-                                    <h5 class="card-title text-primary">Captain America</h5>
-                                    <p class="card-text">Vowing to serve his country any way he could, young Steve Rogers took the super soldier serum to become America's one-man army. Fighting for the red, white and blue for over 60 years, Captain America is the living, breathing symbol of freedom and liberty.</p>
-                                    
-                                    <footer class="blockquote-footer">
-                                        <small>
-                                            <a href="http://marvel.com">Data provided by Marvel. © 2018 MARVEL</a>
-                                        </small>
-                                    </footer>
+                                    <h5 class="card-title text-primary">{{ hero.nome }}</h5>
+
+                                    {% if hero.descricao == "" %}
+                                        <p class="card-text">
+                                            <br>
+                                            We can not find information about this hero. He was faster and
+                                             was able to hide his information before we searched for them. 
+                                             But, no problem, because fate always arrives...</p>
+                                    {% else %}
+                                        <p class="card-text">{{ hero.descricao }}</p>
+                                        
+                                        <footer class="blockquote-footer">
+                                            <small>
+                                                <a href="http://marvel.com">Data provided by Marvel. © 2018 MARVEL</a>
+                                            </small>
+                                        </footer>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -88,10 +99,10 @@
                         <div id="carouselBg">
                             <div id="carouselExample" class="carousel slide carousel-fade center">
                                 <div class="carousel-inner">
-                                    {% for figure in json.figuras %}
+                                    {% for figure in hero.comics %}
                                     
                                     <div class="carousel-item {{figure.active}}">
-                                        <img id="imgCarousel" class="d-block w-100" src="{{ url_for ('static',filename=figure.figura ) }}">
+                                        <img id="imgCarousel" class="d-block w-100" src="{{ figure.url_capa }}">
                                     </div>
                                     
                                     {% endfor %}
@@ -115,14 +126,20 @@
                     
                     <div class="card-columns twetts">
                         {% for tt in t.twetts %}
+
                         {% if tt.nota > 3 %}
-                        <div class="card text-white bg-success">
+                        <div class="{{ tt.cardClass }} text-white bg-success">
+                        {% else %}
+                            {% if tt.nota > 2 %}
+                            <div class="{{ tt.cardClass }} text-black bg-light">
                             {% else %}
                             <div class="{{ tt.cardClass }} text-white bg-danger">
-                                {% endif %}
+                            {% endif %}
+                        {% endif %}
+
                                 <div class="card-body">
                                     
-                                    <h5 class="card-title"><img class="rounded-circle mr-3" style="width: 50px;height: 50px;" src="{{ url_for('static', filename=tt.url_foto_perfil) }}" />{{ tt.nickname }} (@{{ tt.username }})</h5>
+                                    <h5 class="card-title"><img class="rounded-circle mr-3" style="width: 50px;height: 50px;" src="{{tt.url_foto_perfil}}" /> {{ tt.nickname }} (@{{ tt.username }})</h5>
                                     <p class="card-text"><cite>{{ tt.conteudo }}</cite></p>
                                     
                                 </div>
@@ -132,7 +149,11 @@
                                     {% if tt.nota > 3 %}
                                     <i class="far fa-thumbs-up iconReview"></i> Positive comment 
                                     {% else %}
-                                    <i class="far fa-thumbs-down iconReview"></i> Negative comment 
+                                        {% if tt.nota > 2 %}
+                                        <i class="fas fa-fist-raised iconReview"></i> Neutral comment 
+                                        {% else %}
+                                        <i class="far fa-thumbs-down iconReview"></i> Negative comment 
+                                        {% endif %}
                                     {% endif %}
                                 </footer>
                             </div>
@@ -157,9 +178,9 @@
                                                 
                                                 Examples:
                                                 <br>
-                                                <a class="alert-link" href="{{ url_for('search', query='Captain America')}}">Captain America</a><br>
-                                                <a class="alert-link" href="{{ url_for('search', query='Iron Man')}}">Iron Man</a><br>
-                                                <a class="alert-link" href="{{ url_for('search', query='Spider-Man')}}">Spider-Man</a><br>
+                                                <a class="alert-link" href="{{ url_for('search', name='Captain America')}}">Captain America</a><br>
+                                                <a class="alert-link" href="{{ url_for('search', name='Iron Man')}}">Iron Man</a><br>
+                                                <a class="alert-link" href="{{ url_for('search', name='Spider-Man')}}">Spider-Man</a><br>
                                         </p>
                                     </div>
                                 </div>
