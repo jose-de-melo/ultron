@@ -32,6 +32,7 @@ class MarvelAPI:
 
         return requests.get(req).text
 
+    ''' Filtra os resultados e devolve apenas os dados necessários para a aplicação '''
     def filter(self, json_str):
         jsonResponse = json.loads(json_str)
 

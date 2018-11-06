@@ -39,7 +39,7 @@ class Tweety:
 
         VaderSentimentResult == ['nota']
 
-        Tembém retira as mensagens que estão truncadas
+        Também retira as mensagens que estão truncadas
     '''
     def filter(self,tw_response):
         jso = []

@@ -8,50 +8,26 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
-'''Adiciona o callback da requisição antes do dado '''
-def insert_callback(data):
-    try:
-        return "{0}({1})".format(request.args['callback'],data)
-    except:
-        return "{0}({1})".format('not callback' ,data)
-
+''' Rota para renderizar a página inicial da aplicação'''
 @app.route('/', methods=['GET'])
 def index():
     return render_template("index.html", status=201)
 
-'''URL de ajuda'''
-@app.route('/help')
-def help():
-    jso = json.dumps({
-        ' /help':'Retorna um json com as url e seus respectivos retornos',
-        'GET /twitter/_termo_':'Busca o _termo_ na api do twitter e retorna um json contendo:nome, nick, profile_img_url, text',
-        'GET /marvel/_hero_':'Busca pelo _hero_ na api da marvel e retorna um json com as informações do heroi'
-    })
-    return insert_callback(jso) 
 
-'''End-point para recuperar tweets que possuam determinado termo'''
-@app.route('/twitter/<termo>')
-def tweet(termo):
-    return insert_callback(search_tweets(termo))
-
+'''Busca por tweets que possuam determinado termo usando módulo'''
 def search_tweets(termo):
     tweety = tm.Tweety()
     result = tweety.search_term(termo)
     return tweety.filter(result)
 
-'''End-point para recuperar informações sobre o heroi'''
-@app.route('/marvel/<hero>')
-def marvel_hero(hero):
-    marvelpi = mm.MarvelAPI()
-    return insert_callback( marvelpi.filter(marvelpi.request_hero(hero)) )
 
-
+''' Busca pelo nome do herói fornecido utilizando módulo'''
 def search_hero(heroName):
     marvelpi = mm.MarvelAPI()
     return marvelpi.filter(marvelpi.request_hero(heroName))
 
 
-
+'''End-point para recuperar informações sobre o heroi'''
 @app.route('/hero', methods=['GET'])
 def search():
     query = request.args.get('name')
