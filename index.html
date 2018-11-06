@@ -4,25 +4,19 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
   <title>Ultron</title>
-
+  
   <!-- CSS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
-
+  <link rel="icon" type="image/ico" href="images/favicon.ico">
+  
 </head>
 <body>
   <nav class="teal darken-3" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="index.html" class="brand-logo">Ultron</a>
-      <ul class="right hide-on-med-and-down">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-
-      <ul id="nav-mobile" class="sidenav">
-        <li><a href="#">Navbar Link</a></li>
-      </ul>
-      <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+    <div class="nav-wrapper container">
+      <a id="logo-container" href="index.html" class="brand-logo">Ultron</a>
     </div>
   </nav>
   <div class="section no-pad-bot" id="index-banner">
@@ -30,96 +24,312 @@
       <br><br>
       <h1 class="header center teal-text text-darken-3">Ultron</h1>
       <div class="row center">
-        <h5 class="header col s12 light">Look for information and what people have been talking about on Twitter about your favorite Marvel hero</h5>
+        <h5 class="header col s12 light">Veja informações e o que as pessoas têm comentado no Twitter sobre o seu herói favorito da Marvel!</h5>
       </div>
       <div class="row center">
-        <a href="https://github.com/jose-de-melo/ultron" id="download-button" class="btn-large waves-effect waves-light teal darken-3"><i class="fab fa-github left"></i> View on GitHub</a>
+        <a href="https://github.com/jose-de-melo/ultron" id="download-button" class="btn-large waves-effect waves-light teal darken-3"><i class="fab fa-github left"></i> Ver no GitHub</a>
       </div>
       <br><br>
-
+      
     </div>
   </div>
-
-
-  <!--
-  <div class="container">
-    <div class="section">
-
-      <div class="row">
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">Speeds up development</h5>
-
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">User Experience Focused</h5>
-
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
-          </div>
-        </div>
-
-        <div class="col s12 m4">
-          <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">Easy to work with</h5>
-
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
-          </div>
-        </div>
-      </div>
-
+  
+  <br><br>
+  
+  <div class="container section">
+    
+    <div>
+      <h5 class="valign-wrapper">O que é</h5>
+      <p>Ultron é uma aplicação que busca informações e comentários sobre heróis da Marvel,
+        além de fazer uma análise de sentimento sobre os comentários encontrados. Para fazer isso, consome duas APIs distintas,
+        a <a href="https://developer.marvel.com">Marvel Comics API</a> e a <a href="https://developer.twitter.com">Twitter API</a>,
+        além de usar a biblioteca do Python, <a href="https://github.com/cjhutto/vaderSentiment">vaderSentiment</a>, 
+        para analisar os comentários contido nos tweets recebidos.
+      </p>
     </div>
+    
     <br><br>
-  </div>
-  -->
-
-  <footer class="page-footer teal">
-    <div class="container">
-      <div class="row">
-        <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
+    
+    <div>
+      <h5 class="valign-wrapper">Configuração e Instalação</h5>
+      
+      <p> > Caso ainda não tenha, instale a versão do Python3 disponível em <a href="https://www.python.org/downloads">python.org/downloads</a>,
+        de acordo com o seu sistema operacional.</p>
+        
+        <p> > Clone ou baixe o repositório e descompacte:<br><br>
+          <span class="linCode">$&nbsp;&nbsp;&nbsp;git&nbsp;&nbsp;&nbsp;clone&nbsp;&nbsp;&nbsp;https://github.com/jose-de-melo/ultron.git</span>
+        </p>
+        
+        <p> > Entre na pasta do projeto e instale as dependências necessárias, listadas no arquivo "requirements.txt":<br><br>
+          <span class="linCode">$&nbsp;&nbsp;&nbsp;pip&nbsp;&nbsp;&nbsp;install&nbsp;&nbsp;&nbsp;-r&nbsp;&nbsp;&nbsp;./requirements.txt</span>
+        </p>
+        
+        <p> > Execute o arquivo "ultron_server.py". Após, abra o navegador e vá para o endereço: <a href="http://127.0.0.1:8080">127.0.0.1:8080</a>:<br><br>
+          <span class="linCode">$&nbsp;&nbsp;&nbsp;python&nbsp;&nbsp;&nbsp;ultron_server.py</span>
+        </p>
+      </div>
+      
+      <br><br>
+      
+      <div>
+        
+        <h5>O que foi usado no desenvolvimento</h5>
+        <br>
+        <div class="row">
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator imgCard" src="images/python.png">
+              </div>
+              
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Python<i class="material-icons right">more_horiz</i></span>
+              </div>
+              
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Python<i class="material-icons right">close</i></span>
+                <p>
+                  Linguagem de alto nível, interpretada, de script, imperativa, orientada a objetos, funcional,
+                  de tipagem dinâmica e forte.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator imgCard" src="images/htmlcss.png">
+              </div>
+              
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">HTML/CSS<i class="material-icons right">more_horiz</i></span>
+              </div>
+              
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">HTML/CSS<i class="material-icons right">close</i></span>
+                <p>
+                  HTML é uma das linguagens que utilizamos para desenvolver websites. O acrônimo HTML vem do inglês 
+                  e significa Hypertext Language ou em português Linguagem de Marcação de Hipertexto. É a linguagem 
+                  base da internet.
+                  
+                  <br><br>
+                  Cascading Style Sheets (CSS) é uma "folha de estilo" composta por "camadas" e utilizada para 
+                  definir a apresentação (aparência) em páginas da internet que adotam para o seu desenvolvimento
+                  linguagens de marcação (como XML, HTML e XHTML). 
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator imgCard" src="images/js.png">
+              </div>
+              
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">JavaScript<i class="material-icons right">more_horiz</i></span>
+              </div>
+              
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">JavaScript<i class="material-icons right">close</i></span>
+                <p>
+                  É uma linguagem de programação interpretada. Foi originalmente implementada como parte dos navegadores
+                  web para que scripts pudessem ser executados do lado do cliente e interagissem com o usuário sem a necessidade
+                  deste script passar pelo servidor, controlando o navegador, realizando comunicação assíncrona e alterando o conteúdo 
+                  do documento exibido.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+        
+        <div class="row">
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator imgCard" src="images/flask.png">
+              </div>
+              
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Flask<i class="material-icons right">more_horiz</i></span>
+              </div>
+              
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Flask<i class="material-icons right">close</i></span>
+                <p>
+                  Pequeno framework web escrito em Python e baseado na biblioteca WSGI Werkzeug e na biblioteca
+                  de Jinja2. Tem a flexibilidade do Python e provê um modelo simples para desenvolvimento web.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator imgCard" src="images/jinja.png">
+              </div>
+              
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Jinja2<i class="material-icons right">more_horiz</i></span>
+              </div>
+              
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Jinja2<i class="material-icons right">close</i></span>
+                <p>
+                  Mecanismo de template completo para Python. Possui suporte unicode completo, um ambiente de 
+                  execução integrado em área restrita opcional, amplamente utilizado e licenciado pela BSD.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator imgCard" src="images/marvel.jpg">
+              </div>
+              
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Marvel Comics API<i class="material-icons right">more_horiz</i></span>
+              </div>
+              
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Marvel Comics API<i class="material-icons right">close</i></span>
+                <p>
+                  A Marvel Comics API é um serviço RESTful que fornece métodos para acessar recursos específicos 
+                  em URLs canônicas e para pesquisar e filtrar conjuntos de recursos por vários critérios.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+        
+        <div class="row">
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator imgCard" src="images/twitter.png">
+              </div>
+              
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">Twitter API<i class="material-icons right">more_horiz</i></span>
+              </div>
+              
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">Twitter API<i class="material-icons right">close</i></span>
+                <p>
+                  A API do Twitter permite que diversos aplicativos conectem-se a ele para os mais variados fins. A partir de sua API, o Twitter começou a ser utilizado em aplicações rodando em dispositivos móveis, periféricos, entre outros. O funcionamento desta API é baseado em algumas tecnologias e conceitos como OAuth e REST. 
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          <div class="col l4 s12">
+            <div class="card">
+              <div class="card-image waves-effect waves-block waves-light">
+                <img class="activator imgCard" src="images/vader.jpg">
+              </div>
+              
+              <div class="card-content">
+                <span class="card-title activator grey-text text-darken-4">vaderSentiment<i class="material-icons right">more_horiz</i></span>
+              </div>
+              
+              <div class="card-reveal">
+                <span class="card-title grey-text text-darken-4">vaderSentiment<i class="material-icons right">close</i></span>
+                <p>
+                  O VADER (Valence Aware Dictionary e sEntiment Reasoner) é uma ferramenta escrita em Python para análise de sentimentos baseada em léxico e regras que são especificamente
+                  sintonizadas com sentimentos expressos em mídias sociais.
+                </p>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+        
+      </div>
+      
+      
+      
+      
+      <br><br>
+      
+      <div>
+        <h5 class="valign-wrapper">Screenshots</h5>
+        <br>
+        <div class="row">
+          <div class="col s12 l4">
+            <a href="images/screenshot1.png"><img src="images/screenshot1.png" alt="Main Page" class="screenshots"></a>
+          </div>
+          
+          
+          <div class="col s12 l4">
+            <a href="images/screenshot2.png"><img src="images/screenshot2.png" alt="Info Section" class="screenshots"></a>
+          </div>
+          
+          <div class="col s12 l4">
+            <a href="images/screenshot3.png"><img src="images/screenshot3.png" alt="Comics Section" class="screenshots"></a>
+          </div>
+        </div>
+        
+        <br><br>
+        
+        <div class="row">
+          <div class="col s12 l4">
+            <a href="images/screenshot4.png"><img src="images/screenshot4.png" alt="Tweets Section" class="screenshots"></a>
+          </div>
+          
+          
+          <div class="col s12 l4">
+            <a href="images/screenshot5.png"><img src="images/screenshot5.png" alt="Error Page" class="screenshots"></a>
+          </div>
+          
         </div>
       </div>
+      
     </div>
-    <div class="footer-copyright">
+    
+    
+    
+    
+    <footer class="page-footer teal" style="height: 100%;margin-bottom: 0;">
       <div class="container">
-      Made by <a class="teal-text text-lighten-3" href="https://github.com/jose-de-melo">José de Melo</a>
+        <div class="row">
+          <div class="col l6 s12">
+            <h5 class="white-text">Motivação</h5>
+            <p class="grey-text text-lighten-4">O projeto Ultron foi desenvolvido como primeiro trabalho prático da disciplina de WebServices, do 4º período (2018),
+              do curso de Tecnologia em Sistemas para Internet, do Instituto Federal do Sudeste de Minas Gerais - <i>campus</i> Barbacena.
+            </p>
+            
+            
+          </div>
+          <div class="col l3 s12">
+          </div>
+          <div class="col l3 s12">
+            <h5 class="white-text">Desenvolvedores</h5>
+            <ul>
+              <li><a class="white-text" href="https://github.com/jose-de-melo">José de Melo <i class="fab fa-github right"></i></a></li>
+              <li><a class="white-text" href="https://github.com/tarllesroman">Tarlles Roman <i class="fab fa-github right"></i></a></li>
+            </ul>
+          </div>
+        </div>
       </div>
-    </div>
-  </footer>
-
-
-  <!--  Scripts-->
-  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-  <script src="js/materialize.js"></script>
-  <script src="js/init.js"></script>
-
+      <div class="footer-copyright">
+        <div class="container">
+          Made by <a class="teal-text text-lighten-3" href="https://github.com/jose-de-melo">José de Melo</a> and <a class="teal-text text-lighten-3" href="http://github.com/tarllesroman">Tarlles Roman</a>
+        </div>
+      </div>
+    </footer>
+    
+    
+    <!--  Scripts-->
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="js/materialize.js"></script>
+    <script src="js/init.js"></script>
+    
   </body>
-</html>
+  </html>
+  

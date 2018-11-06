@@ -12,3 +12,19 @@
 .icon-block .material-icons {
 	font-size: inherit;
 }
+
+.linCode{
+  padding: 10px;
+  font-weight: bold;
+  background-color: #eeeeee;
+}
+
+.screenshots{
+  width: 300px;
+  height: 130px;
+}
+
+.imgCard{
+  width: 100px;
+  height: 200px;
+}
