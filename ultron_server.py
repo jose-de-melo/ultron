@@ -51,31 +51,18 @@ def search_hero(heroName):
     return marvelpi.filter(marvelpi.request_hero(heroName))
 
 
-def filtrar_comics(comic):
-    if 'image_not_available' in comic['url_capa']:
-        return False
-    else:
-        return True
 
 @app.route('/hero', methods=['GET'])
 def search():
     query = request.args.get('name')
 
+    if query == "":
+        return render_template("index.html", status=404)
+
     jsonResponse = json.loads(search_hero(query))
 
     if jsonResponse['status'] == 404:
         return render_template("index.html", status=404)
-
-    comics = []
-
-    for comic in jsonResponse['comics']:
-        if filtrar_comics(comic):
-            comics.append(comic)
-        else:
-            continue
-
-    jsonResponse['comics'] = comics
-    jsonResponse['comics'][0]['active'] = "active"
 
     twetts = search_tweets("'"+query+"'")
 
