@@ -53,16 +53,21 @@ class MarvelAPI:
 
         firstComic = True
         for comic in comicsList:
-            url_image_comic = {}
-
-            if firstComic == True:
-                url_image_comic['active'] = "active"
-                firstComic = False
+            link_capa = str(comic['thumbnail'])
+            
+            if "image_not_available" in link_capa:
+                continue
             else:
-                url_image_comic['active'] = ""
+                url_image_comic = {}
 
-            url_image_comic['url_capa'] = "{}.{}".format(comic['thumbnail']['path'], comic['thumbnail']['extension'])
-            comics.append(url_image_comic)
+                if firstComic == True:
+                    url_image_comic['active'] = "active"
+                    firstComic = False
+                else:
+                    url_image_comic['active'] = ""
+
+                url_image_comic['url_capa'] = "{}.{}".format(comic['thumbnail']['path'], comic['thumbnail']['extension'])
+                comics.append(url_image_comic)
 
         hero_out['comics'] = comics
 
