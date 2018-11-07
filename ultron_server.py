@@ -8,6 +8,8 @@ from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
+cache_marvel = "cache/"
+
 ''' Rota para renderizar a página inicial da aplicação'''
 @app.route('/', methods=['GET'])
 def index():
@@ -26,23 +28,56 @@ def search_hero(heroName):
     marvelpi = mm.MarvelAPI()
     return marvelpi.filter(marvelpi.request_hero(heroName))
 
+''' Retorna as informações do heroi em cache, se não existir ele é criado'''
+def marvel_cache_service(heroName):
+    try:
+        file = open('{}{}.marc'.format(cache_marvel,heroName),'r')
+        text = file.read()
+        file.close()
+        return json.loads(text)
+    except Exception:
+        heroInfo = search_hero(heroName)
+        jsn = json.loads(heroInfo)
+        if(jsn['status'] != 404):
+            file = open('{}{}.marc'.format(cache_marvel,heroName),'w')
+            file.write(heroInfo)
+            file.close()
+        return jsn
+
+''' Retorna os tweets do heroi recebidos, se não receber nenhum tenta retornar o cache'''
+def twitter_cache_service(term):
+    try:
+        twetts = search_tweets("'{}'".format(term))
+        file = open('{}{}.twec'.format(cache_marvel,term),'w')
+        file.write(twetts)
+        file.close()
+        return json.loads(twetts)
+    except Exception:
+        try:
+            file = open('{}{}.twec'.format(cache_marvel,term),'r')
+            twetts = file.read()
+            file.close()
+            return json.loads(twetts)
+        except Exception:
+            return []
+
 
 '''End-point para recuperar informações sobre o heroi'''
 @app.route('/hero', methods=['GET'])
 def search():
     query = request.args.get('name')
 
-    if query == "":
+    if(query == ""):
         return render_template("index.html", status=404)
 
-    jsonResponse = json.loads(search_hero(query))
+    heroInfo = marvel_cache_service(query)
 
-    if jsonResponse['status'] == 404:
+    if(heroInfo['status'] == 404):
         return render_template("index.html", status=404)
 
-    twetts = search_tweets("'"+query+"'")
+    twetts = twitter_cache_service("'{}'".format(query))
 
-    return render_template("index.html", hero=jsonResponse, query=query, t = twetts, status=200)
+    return render_template("index.html", hero=heroInfo, query=query, t = {'twetts':twetts}, status=200)
 
 '''__main__'''
 if __name__ == "__main__":
