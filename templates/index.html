@@ -127,10 +127,10 @@
                     <div class="card-columns twetts">
                         {% for tt in t.twetts %}
 
-                        {% if tt.nota > 3 %}
+                        {% if tt.nota > 0.05 %}
                         <div class="{{ tt.cardClass }} text-white bg-success">
                         {% else %}
-                            {% if tt.nota > 2 %}
+                            {% if tt.nota > -0.05 %}
                             <div class="{{ tt.cardClass }} text-black bg-light">
                             {% else %}
                             <div class="{{ tt.cardClass }} text-white bg-danger">
@@ -146,10 +146,10 @@
                                 
                                 <footer class="fooTwett">
                                     <span class="data"><cite>{{ tt.data }}</cite></span>
-                                    {% if tt.nota > 3 %}
+                                    {% if tt.nota > 0.05 %}
                                     <i class="far fa-thumbs-up iconReview"></i> Positive comment 
                                     {% else %}
-                                        {% if tt.nota > 2 %}
+                                        {% if tt.nota > -0.05 %}
                                         <i class="fas fa-fist-raised iconReview"></i> Neutral comment 
                                         {% else %}
                                         <i class="far fa-thumbs-down iconReview"></i> Negative comment 
