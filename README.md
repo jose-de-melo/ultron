@@ -9,3 +9,5 @@ Acesse o [site](https://ultron-analyser.herokuapp.com/) para ver a aplicação f
 Autores:
 - José de Melo
 - Tarlles Roman
+
+**Apenas para fins de estudo.**
